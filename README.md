@@ -52,20 +52,20 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-`[Enter your group name]`
+``
 
 ## 1.2 Team Members
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `[Student 1]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `[Student 2]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
+| `Shraddha` | `Coding` | `not applicable` | `Resourceful` |
+| `Ashvanth` | `Electronics` | `not applicable` | `Motivational` |
 
 ## 1.3 Project Title
-`[Enter the title of your project]`
+`MIMIC (Multimodal Interactive Mixed Reality Interface & Control)`
 
 ## 1.4 One-Line Pitch
-`[Describe your project in one sentence]`
+`A mixed reality world which mirrors the movement and picking up of objects available in the virtual world.`
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
@@ -75,7 +75,7 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`[Write here]`
+`Our project is a mixed reality world in which the virtual world mirrors the real one. One can move their hands and pick up virtual objects, all of which will be reflected back in the digital screen. It creates a fun sensory experience blurring the line between digital and physical.  The use of cameras to sense depth and distance, sensors for the fingers and a virtual world created on a game engine - this comprises all the technologies involved.`
 
 ---
 
@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`[Write here]`
+`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. Some one would want to `
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +109,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`[Write here]`
+`Interactive experience for mixed audience.`
 
 ---
 
