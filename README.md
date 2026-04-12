@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. Some one would want to `
+`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. `
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -128,7 +128,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-`[Write here]`
+`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of haptic technology which is new and exciting. `
 
 ---
 
@@ -144,29 +144,29 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+`move hand - camera + potentiometer detects a change in the legnth of string - hand moves in virtual world - finegrs bend - object is picked up in digital world - hand feels a sensation of something stopping it as the length decreases.`
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
-| Is explanation required before use? | `[Write here]` |
+| Who is this for? | `VR enthusiasts+general public` |
+| Age range | `all age groups` |
+| Solo or multiplayer | `solo` |
+| Expected duration of one round | `few mins or lesser` |
+| What should the player feel? | `a sense of the virtual world and a real life feeling of picking up an object` |
+| Is explanation required before use? | `not really , just explain the point of the game- that is to pick up an object` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
-7. **Reset:** `[How does the next round begin?]`
+1. **Approach:** `wearing the glove`
+2. **Start:** `start by moving hand`
+3. **First Action:** `move hand to rigth or left`
+4. **Main Interaction:** `virtual world keeps up with their movemenet`
+5. **System Response:** `keeps up with their movement`
+6. **Win / Lose / End Condition:** `they pick up the object`
+7. **Reset:** `done`
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
@@ -183,9 +183,9 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
+- [ ] `the virtual world tracks their movements`
+- [ ] `object is succefully picked up`
+- [ ] `bending of finegrs is mirrorerd in virtual world and size of object is felt by the person 'holding' it`
 - [ ] `[Condition 4]`
 - [ ] `[Condition 5]`
 
