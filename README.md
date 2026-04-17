@@ -185,7 +185,7 @@ Your project will be considered complete only if these conditions are met.
 
 - [ ] `the virtual world tracks their movements`
 - [ ] `object is succefully picked up`
-- [ ] `bending of finegrs is mirrorerd in virtual world and size of object is felt by the person 'holding' it`
+- [ ] `bending of finegrs is mirrorerd in virtual world and virtual fingers don't move beyond the size of the object even if physical fingers move`
 - [ ] `[Condition 4]`
 - [ ] `[Condition 5]`
 
@@ -198,7 +198,7 @@ What is the smallest version of this project that still delivers the core experi
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
+- `come back to this`
 - `[Stretch feature 2]`
 - `[Stretch feature 3]`
 
@@ -209,16 +209,16 @@ What features are nice to have but not essential?
 ## 6.1 Project Type
 Check all that apply.
 
-- [ ] Electronics-based
-- [ ] Mechanical
+- [ + ] Electronics-based
+- [ + ] Mechanical
 - [ ] Sensor-based
 - [ ] App-connected
 - [ ] Motorized
 - [ ] Sound-based
 - [ ] Light-based
-- [ ] Screen/UI-based
+- [ + ] Screen/UI-based
 - [ ] Fabricated structure
-- [ ] Game logic based
+- [ + ] Game logic based
 - [ ] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
@@ -233,16 +233,16 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`[Write here]`
+`So it takes in the input of the finger bending, in terms of the angle with which the thread bends. It also takes in the input through media pipe of the hand movememnt in the axises. The output is the virtual hand moving and bending using the inputs. Physical structure is the glove itself.`
 
 ## 6.3 Input / Output Map
 
 | System Part | Type | What It Does |
 |---|---|---|
 | `[Button / Sensor / Switch / App Input]` | Input | `[Describe]` |
-| `[ESP32 / Controller]` | Processing | `[Describe]` |
-| `[LED / Motor / Servo / Buzzer / Display]` | Output | `[Describe]` |
-| `[Mechanical Assembly]` | Physical Action | `[Describe]` |
+| `[ESP32 ` | Processing | `Takes in the potetioneter values and translates it into values through python.` |
+| `[ Display]` | Output | `Is the virtual world with the glove and the objects in the enviuronment. Replicates real world movement and imitation of picking up object.` |
+| `[Mechanical Assembly]` | Physical Action | `Potetiometers have a rubber band and string attatched on opposite ends. The string is attatched to the finger tip and moves along with it. The rubber band helps in bringing back the potentiometer knob to its original position when the fingers are uncurled.` |
 
 ---
 
@@ -256,7 +256,7 @@ Add an early sketch of the full idea.
 
 Example:
 ```md
-
+ 
 ```
 
 ## 7.2 Labeled Build Sketch
@@ -287,7 +287,7 @@ Add a sketch with labels showing:
 Check all that apply.
 
 - [ ] Gears
-- [ ] Pulleys
+- [+] Pulleys
 - [ ] Belt drives
 - [ ] Linkages
 - [ ] Hinges
@@ -303,7 +303,7 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`[Write here]`
+`The mechanism works such that the string and the rubber band attatched to the potetiometer help in giving values for how far the finger is bending and for when its back to its original resting postion.`
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -314,7 +314,7 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-`[Write here]`
+``
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
