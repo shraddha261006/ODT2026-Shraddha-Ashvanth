@@ -65,7 +65,7 @@ By the final review, this README should clearly show:
 `MIMIC (Multimodal Interactive Mixed Reality Interface & Control)`
 
 ## 1.4 One-Line Pitch
-`A mixed reality world which mirrors the movement and picking up of objects available in the virtual world.`
+`A mixed reality world which shows the environment of a bowling alley. One can mimic the picking up of the bowling ball, aim for the balls and try to knock them down.`
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
@@ -75,7 +75,7 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`Our project is a mixed reality world in which the virtual world mirrors the real one. One can move their hands and pick up virtual objects, all of which will be reflected back in the digital screen. It creates a fun sensory experience blurring the line between digital and physical.  The use of cameras to sense depth and distance, sensors for the fingers and a virtual world created on a game engine - this comprises all the technologies involved.`
+`Our project is a mixed reality world in which the virtual world mirrors the real one. One can move their hands and pick up a bowling ball. They may then aim for the pins and release the ball as it goes on to eiether miss or hit the targets.It is competitive and engaging as one wants to keep playing until they knock down all the pins. This virtual environment involves the use of media pipe ( hand tracking and rotation), Unity (the game engine for the virtual world), Thonny and python for receiving the input and connecting the potentiometer values to the virtual hand.`
 
 ---
 
@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. `
+`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. It also creates an interactive and a playful environment for friends to play and compare their bowling skills. One is drawn to the game and wants to keep coming back to it to score more and feel the thrill of the game, all played virtually. `
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -128,7 +128,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of haptic technology which is new and exciting. `
+`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of haptic technology which is new and exciting.`
 
 ---
 
@@ -144,29 +144,29 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`move hand - camera + potentiometer detects a change in the legnth of string - hand moves in virtual world - finegrs bend - object is picked up in digital world - hand feels a sensation of something stopping it as the length decreases.`
+`move hand - camera + potentiometer detects a change in the legnth of string - hand moves in virtual world - finegrs bend - object is picked up in digital world - hand feels a sensation of something stopping it as the length decreases. Upon release of fingers - potentiometer goes back to original resting position - ball is launched - pins are hit and collide and fall in succession - restart game and balls spawn back. `
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `VR enthusiasts+general public` |
+| Who is this for? | `VR + E - sports enthusiasts + general public` |
 | Age range | `all age groups` |
 | Solo or multiplayer | `solo` |
 | Expected duration of one round | `few mins or lesser` |
-| What should the player feel? | `a sense of the virtual world and a real life feeling of picking up an object` |
-| Is explanation required before use? | `not really , just explain the point of the game- that is to pick up an object` |
+| What should the player feel? | `a sense of the virtual bowling alley and feeling of throwing a ball ` |
+| Is explanation required before use? | `not really , just explain the point of the game- that is to pick up the ball and aim for the pins and do the motion of throwing it` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
 1. **Approach:** `wearing the glove`
 2. **Start:** `start by moving hand`
-3. **First Action:** `move hand to rigth or left`
-4. **Main Interaction:** `virtual world keeps up with their movemenet`
-5. **System Response:** `keeps up with their movement`
-6. **Win / Lose / End Condition:** `they pick up the object`
-7. **Reset:** `done`
+3. **First Action:** `move hand to the front and back to get the right aim`
+4. **Main Interaction:** `release hand and grip on the virtual ball and it should go knock down the pins`
+5. **System Response:** `keeps up with their movement and records aim of the wrist and hand`
+6. **Win / Lose / End Condition:** `the pins are eiether knocked down or the player misses the pins`
+7. **Reset:** `Restart and balls and pins spawn back `
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
@@ -186,14 +186,14 @@ Your project will be considered complete only if these conditions are met.
 - [ ] `the virtual world tracks their movements`
 - [ ] `object is succefully picked up`
 - [ ] `bending of finegrs is mirrorerd in virtual world and virtual fingers don't move beyond the size of the object even if physical fingers move`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [ ] `Ball is aimed correctly and hits the pins`
+- [ ] `Pins are knocked down`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+`Picking up of the ball and being able to hold and let go of it.`
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
@@ -233,7 +233,7 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`So it takes in the input of the finger bending, in terms of the angle with which the thread bends. It also takes in the input through media pipe of the hand movememnt in the axises. The output is the virtual hand moving and bending using the inputs. Physical structure is the glove itself.`
+`So it takes in the input of the finger bending, in terms of the angle with which the thread bends. It also takes in the input through         of the hand movememnt in the axises. The output is the virtual hand moving and bending using the inputs. Physical structure is the glove itself.`
 
 ## 6.3 Input / Output Map
 
