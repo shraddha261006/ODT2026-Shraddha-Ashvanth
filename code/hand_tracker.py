@@ -1,0 +1,71 @@
+import cv2
+import mediapipe as mp
+import socket
+import json
+
+# --- 1. NETWORK SETUP ---
+# Standard UDP setup to send data to Unity
+UDP_IP = "127.0.0.1"
+UDP_PORT = 5052
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+# --- 2. MEDIAPIPE SETUP ---
+mp_hands = mp.solutions.hands
+mp_drawing = mp.solutions.drawing_utils
+
+# Initialize the camera
+cap = cv2.VideoCapture(0)
+
+# LOWERED CONFIDENCE: 0.3 allows for the "clunky" glove tracking
+with mp_hands.Hands(
+    static_image_mode=False,
+    max_num_hands=1,
+    min_detection_confidence=0.3, 
+    min_tracking_confidence=0.3,
+    model_complexity=1) as hands:
+
+    print(f"Tracking started. Sending data to {UDP_IP}:{UDP_PORT}...")
+
+    while cap.isOpened():
+        success, image = cap.read()
+        if not success:
+            print("Ignoring empty camera frame.")
+            continue
+
+        # Flip the image horizontally for a later selfie-view display
+        # Convert the BGR image to RGB.
+        image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+        
+        # To improve performance, optionally mark the image as not writeable
+        image.flags.writeable = False
+        results = hands.process(image)
+
+        # Draw the hand annotations on the image.
+        image.flags.writeable = True
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+
+        if results.multi_hand_landmarks:
+            for hand_landmarks in results.multi_hand_landmarks:
+                # 1. Draw dots on the screen for debugging
+                mp_drawing.draw_landmarks(
+                    image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+                # 2. Prepare the data list for Unity
+                data = []
+                for lm in hand_landmarks.landmark:
+                    # MediaPipe uses (0-1) normalized coordinates
+                    # We send x, y, and z for all 21 points
+                    data.append({"x": lm.x, "y": lm.y, "z": lm.z})
+
+                # 3. Convert to JSON and send via UDP
+                packet = json.dumps(data)
+                sock.sendto(packet.encode(), (UDP_IP, UDP_PORT))
+
+        # Show the video feed so you can see if the dots disappear
+        cv2.imshow('MediaPipe Hand Tracker (0.3 Confidence)', image)
+        
+        if cv2.waitKey(5) & 0xFF == 27: # Press 'ESC' to quit
+            break
+
+cap.release()
+cv2.destroyAllWindows()
