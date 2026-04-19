@@ -682,7 +682,7 @@ Include:
 - revisions.
 
 **Response:**  
-`[Write here]`
+`We had to 3D print the string holders for the finger joints. We then cut out the potentiometer holder out of foam board and attatched that to the glove using super glue. We had to solder the wires to the potetiometer for more stability.`
 
 ## 17.2 Build Photos
 Add photos throughout the project.
@@ -706,9 +706,9 @@ Example:
 
 | Version | Date | What Changed | Why |
 |---|---|---|---|
-| `v1` | `` | `[Describe]` | `[Reason]` |
-| `v2` | `[Date]` | `[Describe]` | `[Reason]` |
-| `v3` | `[Date]` | `[Describe]` | `[Reason]` |
+| `v1` | `12/04` | `[Started off with the potetiometer connected to the spool from the badge reel]` | `[the badge reel spool would provdie the tension for it to fall back to its original postion]` |
+| `v2` | `15/04` | `the rubber bands are attatched instead and the string was attatched to the 3d printed finger tip ending` | `-` |
+| `v3` | `18/04` | `the string is directly attatched to the end of the glove` | `media pipe stopped recognising the hand with the 'unnatural' finger tip endings` |
 
 ---
 
