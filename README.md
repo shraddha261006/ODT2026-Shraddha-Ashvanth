@@ -333,14 +333,13 @@ If your project includes mechanical motion, document the digital planning before
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-| `[Fusion 360 / Tinkercad / other]` | `[Link or screenshot]` | `[What did you validate?]` |
-| `[Tool]` | `[Link or screenshot]` | `[What did you validate?]` |
+`not applicable since we did not use any simulation except for sketches which are uploaded`
 
 ## 8.5 Changes After Digital Testing
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-`______`
+`not applicable `
 
 ---
 
@@ -421,9 +420,37 @@ Suggested sequence:
 
 ## 10.4 Pseudocode
 
-```text
+text
 [Write your pseudocode here]
-```
+  `START
+
+  INITIALIZE 5 pins on ESP32
+
+  LOOP :
+    
+    READ value from each potentiometer
+   
+    
+    SEND all 5 values over serial 
+    
+    --- In Unity ---
+    
+    RECEIVE serial string from ESP32
+    PARSE into 5 finger curl values
+    
+    IF 3 or more fingers curled > grab threshold THEN
+      attach ball to wrist
+    
+    ELSE IF 2 or more fingers straight < release threshold THEN
+      launch ball using wrist velocity
+      start respawn timer
+    
+    IF respawn timer done THEN
+      destroy old ball
+      spawn new ball
+      reset pins
+
+END `
 
 ---
 
