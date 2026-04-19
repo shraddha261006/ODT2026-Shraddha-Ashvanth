@@ -706,23 +706,27 @@ Example:
 Describe the final version of your project.
 
 **Response:**  
-`[Write here]`
+`The final project is a VR-style bowling game controlled by a diy glove controller. Five potentiometers  on the glove detect finger curl movements, which are read by an ESP32 via Thonny and MicroPython, then sent to Unity where the player can grab, aim and throw a bowling ball in a 3D lane to knock down pins.`
 
 ## 18.2 What Works Well
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- - Potentiometers accurately detect finger curl and 
+  trigger grab/release in Unity
+- The throw mechanic uses wrist velocity to launch 
+  the ball realistically
+  Pins react to collision with proper physics and 
+  fall naturally
+
 
 ## 18.3 What Still Needs Improvement
-- `[Point 1]`
-- `[Point 2]`
-- `[Point 3]`
+- `Wires on the glove get tangled during movement`
+- `Potentiometer readings can be inconsistent between 
+  sessions and need recalibration`
 
 ## 18.4 What Changed From the Original Plan
 How did the project change from the initial idea?
 
 **Response:**  
-`[Write here]`
+`Initially the project was just to pick up objects and let go of them. We then re-imagined it to be a bowling alley. `
 
 ---
 
@@ -734,7 +738,7 @@ What slowed you down?
 How well did you manage time, tasks, and responsibilities?
 
 **Response:**  
-``
+`Our team communicated well when building and testing the circuit and divided tasks effectively between hardware and software. What slowed us down was troubleshooting the potentiometer connections and getting consistent readings from all 5 fingers. Time management was mostly on track, though debugging took longer than expected.`
 
 ## 19.2 Technical Reflection
 What did you learn about:
@@ -745,7 +749,7 @@ What did you learn about:
 - integration?
 
 **Response:**  
-``
+`We learned how to wire 5 potentiometers on a breadboard connected to the ESP32's 3.3V rail, using Thonny to write MicroPython that reads each finger's analog values and sends them over serial to Unity, where we built a 3D bowling game that uses the data to control grab and throw mechanics. On the hardware side, we learned how rubber bands and string mounted on the glove convert finger movement into potentiometer shaft rotation and how to manage 5 sets of wires neatly to keep connections stable during movement.`
 
 ## 19.3 Design Reflection
 What did you learn about:
@@ -763,7 +767,7 @@ What did you learn about:
 What would you improve next?
 
 **Response:**  
-`I would have loved to make the glove more easily wearable and customsible for all to try and play. We could have created a more realistic bowling alley envrionment. A more accurate animation of the fingers bending and picking up of the objects.`
+`We would have loved to make the glove more easily wearable and customsible for all to try and play. We could have created a more realistic bowling alley envrionment. A more accurate animation of the fingers bending and picking up of the objects.`
 
 ---
 
