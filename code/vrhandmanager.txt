@@ -1,0 +1,120 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class VRHandManager : MonoBehaviour
+{
+    [System.Serializable]
+    public class Landmark { public float x, y, z; }
+
+    [System.Serializable]
+    public class LandmarkList { public Landmark[] items; }
+
+    [Header("Network")]
+    public int port = 5052;
+    private UdpClient client;
+    private Thread receiveThread;
+    private string latestData = "";
+    private bool isRunning = false;
+
+    [Header("Tracking Settings")]
+    public Transform wristTransform; 
+    public float handScale = 10f;
+    public float smoothSpeed = 20f;
+    public float fixedZ = 2f;
+    public bool invertY = false;
+
+    private Quaternion lastRotation = Quaternion.identity;
+
+    void Start()
+    {
+        isRunning = true;
+        receiveThread = new Thread(ReceiveData);
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+    }
+
+    private void ReceiveData()
+    {
+        try {
+            client = new UdpClient(port);
+            while (isRunning)
+            {
+                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+                byte[] data = client.Receive(ref anyIP);
+                latestData = Encoding.UTF8.GetString(data);
+            }
+        } 
+        catch (ThreadAbortException) { /* This silences the error you saw */ }
+        catch (Exception e) { Debug.Log("UDP Error: " + e.Message); }
+    }
+
+    void Update()
+    {
+        if (string.IsNullOrEmpty(latestData)) return;
+
+        try
+        {
+            string wrapped = "{\"items\":" + latestData + "}";
+            LandmarkList list = JsonUtility.FromJson<LandmarkList>(wrapped);
+
+            if (list != null && list.items.Length >= 21)
+            {
+                // Use MCP (knuckles) for more stable rotation than fingertips
+                Vector3 wristPos  = RawToVec(list.items[0]);
+                Vector3 indexMCP  = RawToVec(list.items[5]);
+                Vector3 middleMCP = RawToVec(list.items[9]); 
+                Vector3 pinkyMCP  = RawToVec(list.items[17]);
+
+                // 1. POSITION
+                Vector3 targetPosition = new Vector3(wristPos.x * handScale, wristPos.y * handScale, fixedZ);
+
+                // 2. ROTATION (The "Perfect" orientation logic)
+                // Forward: direction from wrist to middle knuckle
+                Vector3 forwardVec = (middleMCP - wristPos).normalized;
+                // Side: direction across the knuckles
+                Vector3 sideVec = (indexMCP - pinkyMCP).normalized;
+                // Up: The "Palm Normal"
+                Vector3 upVec = Vector3.Cross(forwardVec, sideVec).normalized;
+
+                // Orthogonalize vectors to prevent distortion
+                sideVec = Vector3.Cross(upVec, forwardVec).normalized;
+
+                if (forwardVec != Vector3.zero && upVec != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(forwardVec, upVec);
+                    
+                    // --- CALIBRATION ---
+                    // If your hand model is rotated 90 degrees wrong, uncomment the line below:
+                    // targetRotation *= Quaternion.Euler(0, 0, 0); 
+
+                    lastRotation = targetRotation;
+
+                    // Smooth Apply
+                    wristTransform.localPosition = Vector3.Lerp(wristTransform.localPosition, targetPosition, Time.deltaTime * smoothSpeed);
+                    wristTransform.localRotation = Quaternion.Slerp(wristTransform.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
+                }
+            }
+        }
+        catch (Exception) { }
+    }
+
+    Vector3 RawToVec(Landmark lm)
+    {
+        float x = lm.x - 0.5f;
+        float y = invertY ? (lm.y - 0.5f) : (0.5f - lm.y);
+        // Multiply Z by 3.0 to make parallel/perpendicular movement obvious
+        float z = -lm.z * 3.0f; 
+        return new Vector3(x, y, z);
+    }
+
+    void OnApplicationQuit()
+    {
+        isRunning = false;
+        if (client != null) client.Close();
+        if (receiveThread != null) receiveThread.Abort();
+    }
+}

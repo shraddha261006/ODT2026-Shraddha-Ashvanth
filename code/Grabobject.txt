@@ -1,0 +1,95 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class GrabObject : MonoBehaviour
+{
+    [Header("Grab Settings")]
+    public float grabThreshold = 40f;
+    public float releaseThreshold = 15f;
+    public int fingersRequiredToGrab = 3;
+    public Vector3 grabOffset = new Vector3(0, 0, 0);
+
+    [Header("Throw Settings (Push Logic)")]
+    public float throwPower = 2.0f;
+    public float zPushMultiplier = 4.0f; // Boosts forward momentum
+    public int velocityBufferFrames = 8;
+
+    public static float[] fingerCurls = new float[4];
+
+    private Rigidbody rb;
+    private bool isGrabbed = false;
+    private Transform originalParent;
+    private GameObject wrist;
+    public string wristObjectName = "Wrist";
+
+    private Vector3 lastWristPos;
+    private Queue<Vector3> velBuffer = new Queue<Vector3>();
+
+    void Start() {
+        rb = GetComponent<Rigidbody>();
+        originalParent = transform.parent;
+        wrist = GameObject.Find(wristObjectName);
+        if(wrist != null) lastWristPos = wrist.transform.position;
+    }
+
+    void Update() {
+        if (wrist == null) return;
+
+        // 1. TRACK VELOCITY
+        Vector3 currentWristPos = wrist.transform.position;
+        Vector3 delta = currentWristPos - lastWristPos;
+        
+        // Boost the Z component specifically for the 'Push'
+        Vector3 frameVel = new Vector3(delta.x, delta.y, delta.z * zPushMultiplier) / Time.deltaTime;
+        
+        velBuffer.Enqueue(frameVel);
+        if (velBuffer.Count > velocityBufferFrames) velBuffer.Dequeue();
+        lastWristPos = currentWristPos;
+
+        // 2. CHECK FINGERS
+        int closed = 0; int open = 0;
+        foreach (float f in fingerCurls) {
+            if (f >= grabThreshold) closed++;
+            if (f <= releaseThreshold) open++;
+        }
+
+        // 3. GRAB/RELEASE
+        if (!isGrabbed && closed >= fingersRequiredToGrab && IsTouchingHand()) Grab();
+        else if (isGrabbed && open >= fingersRequiredToGrab) Release();
+    }
+
+    void Grab() {
+        isGrabbed = true;
+        rb.isKinematic = true;
+        transform.SetParent(wrist.transform);
+        transform.localPosition = grabOffset;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    void Release() {
+        isGrabbed = false;
+        rb.isKinematic = false;
+        transform.SetParent(originalParent);
+
+        // Average the buffer for a clean throw
+        Vector3 avgVel = Vector3.zero;
+        foreach (Vector3 v in velBuffer) avgVel += v;
+        avgVel /= velBuffer.Count;
+
+        // Apply throw
+        rb.velocity = avgVel * throwPower;
+        
+        // Add some 'heavy' rotation
+        rb.AddTorque(transform.right * rb.velocity.magnitude * 10f);
+        
+        velBuffer.Clear();
+    }
+
+    bool IsTouchingHand() {
+        Collider[] hits = Physics.OverlapSphere(transform.position, transform.localScale.x * 1.5f);
+        foreach (var hit in hits) {
+            if (hit.CompareTag("FingerBone") || hit.gameObject == wrist) return true;
+        }
+        return false;
+    }
+}

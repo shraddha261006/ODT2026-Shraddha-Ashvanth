@@ -1,0 +1,146 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class HandDataHub : MonoBehaviour
+{
+    [System.Serializable]
+    public class Landmark { public float x, y, z; }
+    [System.Serializable]
+    public class LandmarkList { public Landmark[] items; }
+
+    [Header("Network")]
+    public int port = 5052;
+    private UdpClient client;
+    private Thread receiveThread;
+    private string latestData = "";
+    private bool isRunning = false;
+
+    [Header("Hand Settings")]
+    public Transform wristTransform; 
+    public float handScale = 12f;
+    public float baseDepth = 2f; 
+
+    [Header("Smoothing")]
+    [Range(1f, 30f)]
+    public float positionSmoothSpeed = 6f; // Lowered for clunky glove
+    [Range(1f, 30f)]
+    public float rotationSmooth = 8f;     // Lowered for stability
+
+    [Header("Camera Pivot (Aiming)")]
+    public Transform playerRig; 
+    public float horizontalMaxAngle = 70f; 
+    public float verticalMaxAngle = 25f; 
+    [Range(1f, 4f)]
+    public float curveIntensity = 2.5f; 
+    public Vector2 steeringDirection = new Vector2(1f, 1f); 
+
+    [Header("Rotation Calibration")]
+    public Vector3 rotationOffset = new Vector3(-90f, 0f, 180f);
+    public float zSensitivity = 1.0f;
+    public float palmDeadzone = 0.05f;
+
+    void Start() {
+        isRunning = true;
+        receiveThread = new Thread(ReceiveData);
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+    }
+
+    private void ReceiveData() {
+        client = new UdpClient(port);
+        while (isRunning) {
+            try {
+                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+                while (client.Available > 0) {
+                    byte[] data = client.Receive(ref anyIP);
+                    latestData = Encoding.UTF8.GetString(data);
+                }
+                Thread.Sleep(1);
+            } catch (Exception) { }
+        }
+    }
+
+    void Update() {
+        if (string.IsNullOrEmpty(latestData)) return;
+
+        try {
+            string wrapped = "{\"items\":" + latestData + "}";
+            LandmarkList list = JsonUtility.FromJson<LandmarkList>(wrapped);
+
+            if (list != null && list.items.Length >= 21) {
+                
+                // --- 1. POSITIONING ---
+                Vector3 rawWrist = RawToVec(list.items[0]);
+                Vector3 targetPos = new Vector3(
+                    rawWrist.x * handScale, 
+                    rawWrist.y * handScale, 
+                    baseDepth + (rawWrist.z) 
+                );
+                
+                wristTransform.localPosition = Vector3.Lerp(wristTransform.localPosition, targetPos, Time.deltaTime * positionSmoothSpeed);
+
+                // --- 2. CAMERA PIVOT (Aiming) ---
+                if (playerRig != null) {
+                    float normX = (list.items[0].x - 0.5f) * 2f;
+                    float normY = (0.5f - list.items[0].y) * 2f;
+
+                    float curvedX = Mathf.Pow(Mathf.Abs(normX), curveIntensity) * Mathf.Sign(normX);
+                    float curvedY = Mathf.Pow(Mathf.Abs(normY), curveIntensity) * Mathf.Sign(normY);
+                    
+                    float targetPitch = curvedY * verticalMaxAngle * steeringDirection.y;
+                    float targetYaw = curvedX * horizontalMaxAngle * steeringDirection.x;
+                    
+                    Quaternion rigTarget = Quaternion.Euler(-targetPitch, targetYaw, 0);
+                    playerRig.localRotation = Quaternion.Slerp(playerRig.localRotation, rigTarget, Time.deltaTime * 5f);
+                }
+
+                // --- 3. STABILIZED PALM CALCULATION ---
+                // We use the root of the fingers (MCP joints) because they stay 
+                // relatively still compared to the fingertips when making a fist.
+                Vector3 wrist = RawToVec(list.items[0]);    // Landmark 0
+                Vector3 indexBase = RawToVec(list.items[5]); // Landmark 5
+                Vector3 midBase = RawToVec(list.items[9]);   // Landmark 9
+                Vector3 pinkyBase = RawToVec(list.items[17]);// Landmark 17
+
+                // Forward: Wrist to Middle Finger Base
+                Vector3 forward = (midBase - wrist).normalized;
+
+                // Side: Index Base to Pinky Base
+                Vector3 side = (pinkyBase - indexBase).normalized;
+                
+                // Up: Perpendicular to the palm plane
+                Vector3 up = Vector3.Cross(forward, side).normalized;
+
+                if (forward.magnitude > 0.001f && up.magnitude > 0.001f) {
+                    Quaternion cameraSpaceRot = Quaternion.LookRotation(forward, up);
+                    Quaternion targetHandRot = cameraSpaceRot * Quaternion.Euler(rotationOffset);
+                    
+                    // Flip protection logic
+                    if (Quaternion.Dot(wristTransform.localRotation, targetHandRot) < 0) {
+                        targetHandRot = new Quaternion(-targetHandRot.x, -targetHandRot.y, -targetHandRot.z, -targetHandRot.w);
+                    }
+                    
+                    // Apply smooth rotation
+                    wristTransform.localRotation = Quaternion.Slerp(wristTransform.localRotation, targetHandRot, Time.deltaTime * rotationSmooth);
+                }
+            }
+        } catch (Exception) { }
+    }
+
+    // Translates normalized MediaPipe data to Unity World Space
+    Vector3 RawToVec(Landmark lm) {
+        // We apply a small deadzone to the Z (depth) to stop high-frequency micro-jitter
+        float zVal = -lm.z * zSensitivity;
+        return new Vector3(lm.x - 0.5f, 0.5f - lm.y, zVal);
+    }
+
+    void OnApplicationQuit() {
+        isRunning = false;
+        client?.Close();
+        receiveThread?.Abort();
+    }
+}

@@ -1,0 +1,63 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class UDPReceiver : MonoBehaviour
+{
+    public static string latestData = "";
+    private UdpClient udpClient;
+    private Thread receiveThread;
+    private bool isRunning = false;
+
+    void Start()
+    {
+        try
+        {
+            udpClient = new UdpClient(5052);
+            isRunning = true;
+            receiveThread = new Thread(ReceiveData);
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
+            Debug.Log("UDP Receiver started successfully on port 5052");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("UDP Receiver failed to start: " + e.Message);
+        }
+    }
+
+    private void ReceiveData()
+    {
+        while (isRunning)
+        {
+            try
+            {
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
+                byte[] data = udpClient.Receive(ref endPoint);
+                latestData = Encoding.UTF8.GetString(data);
+            }
+            catch (Exception e)
+            {
+                if (isRunning)
+                    Debug.LogWarning("UDP receive error: " + e.Message);
+            }
+        }
+    }
+
+    void OnDestroy()
+    {
+        isRunning = false;
+        receiveThread?.Abort();
+        udpClient?.Close();
+        Debug.Log("UDP Receiver stopped");
+    }
+
+    void OnApplicationQuit()
+    {
+        isRunning = false;
+        udpClient?.Close();
+    }
+}

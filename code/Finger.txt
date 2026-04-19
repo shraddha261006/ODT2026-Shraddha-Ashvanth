@@ -1,0 +1,100 @@
+using UnityEngine;
+using System.IO.Ports;
+
+public class Finger : MonoBehaviour
+{
+    SerialPort dataStream = new SerialPort("COM6", 115200);
+
+    [Header("Finger Bones (Index=0, Mid=1, Ring=2, Pinky=3, Thumb=4)")]
+    public Transform[] f1Bones = new Transform[3]; // Index
+    public Transform[] f2Bones = new Transform[3]; // Middle
+    public Transform[] f3Bones = new Transform[3]; // Ring
+    public Transform[] f4Bones = new Transform[3]; // Pinky
+    public Transform[] f5Bones = new Transform[3]; // Thumb
+
+    [Header("Calibration (0:Index, 1:Mid, 2:Ring, 3:Pinky, 4:Thumb)")]
+    // Since your pots start at 270 and decrease:
+    // Set potMin to 270 (Open) and potMax to something lower like 50 (Closed)
+    public float[] potMin = new float[5] { 270f, 270f, 270f, 270f, 270f }; 
+    public float[] potMax = new float[5] { 50f, 50f, 50f, 50f, 50f };
+
+    [Header("Curl Settings")]
+    public float maxCurlAngle = 80f;
+    public float smoothSpeed = 10f;
+
+    private Quaternion[] startLocalRots = new Quaternion[15];
+    private float[] currentCurl = new float[5];
+    private float[] targetCurl = new float[5];
+    private Transform[] allBones;
+
+    void Start()
+    {
+        // Organize all bones into one flat array for easy looping
+        allBones = new Transform[15];
+        System.Array.Copy(f1Bones, 0, allBones, 0, 3);
+        System.Array.Copy(f2Bones, 0, allBones, 3, 3);
+        System.Array.Copy(f3Bones, 0, allBones, 6, 3);
+        System.Array.Copy(f4Bones, 0, allBones, 9, 3);
+        System.Array.Copy(f5Bones, 0, allBones, 12, 3);
+
+        for (int i = 0; i < 15; i++) {
+            if (allBones[i] != null) startLocalRots[i] = allBones[i].localRotation;
+        }
+
+        try {
+            dataStream.Open();
+            dataStream.ReadTimeout = 50;
+        } catch (System.Exception e) {
+            Debug.LogError("Serial Error: " + e.Message);
+        }
+    }
+
+    void Update()
+    {
+        if (dataStream.IsOpen)
+        {
+            try {
+                string line = dataStream.ReadLine().Trim();
+                string[] parts = line.Split(',');
+
+                if (parts.Length == 5) // Now checking for 5 values
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        float rawVal;
+                        if (float.TryParse(parts[i], out rawVal))
+                        {
+                            // Remap: (raw - openValue) / (closedValue - openValue)
+                            float denom = potMax[i] - potMin[i];
+                            float normalized = (rawVal - potMin[i]) / denom;
+                            
+                            normalized = Mathf.Clamp01(normalized);
+                            targetCurl[i] = normalized * maxCurlAngle;
+                        }
+                    }
+                }
+            } catch (System.TimeoutException) { }
+        }
+
+        for (int i = 0; i < 5; i++)
+            currentCurl[i] = Mathf.Lerp(currentCurl[i], targetCurl[i], Time.deltaTime * smoothSpeed);
+
+        // Update the static array for GrabObject (using first 4 for bowling logic)
+        GrabObject.fingerCurls = new float[] { currentCurl[0], currentCurl[1], currentCurl[2], currentCurl[3] };
+    }
+
+    void LateUpdate()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            float curl = currentCurl[i];
+            for (int j = 0; j < 3; j++) {
+                int index = (i * 3) + j;
+                if (allBones[index] != null)
+                    allBones[index].localRotation = startLocalRots[index] * Quaternion.Euler(curl, 0, 0);
+            }
+        }
+    }
+
+    void OnApplicationQuit() { if (dataStream.IsOpen) dataStream.Close(); }
+}
