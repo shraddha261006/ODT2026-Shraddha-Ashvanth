@@ -118,7 +118,7 @@ Complete the sentence below:
 ## 3.1 References
 List what inspired the project.
 
-| Source Type | Title / Link | What Inspired You |
+| Source Type | Title / Link | What Inspired You | ` come back to this `
 |---|---|---|
 | `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
 | `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
@@ -274,8 +274,8 @@ Add a sketch with labels showing:
 
 | Dimension | Value |
 |---|---|
-| Length | `[Write here]` |
-| Width | `[Write here]` |
+| Length | `20 cm (glove)` |
+| Width | `6cm-bottom, 13 cm top` |
 | Height | `[Write here]` |
 | Estimated weight | `[Write here]` |
 
@@ -303,7 +303,7 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-` `
+`Each potentiometer is on the glove attatched to a foam peice. A rubber band is attached to one end of the potentiometer shaft and a string to the other. When the finger bends, the string pulls the shaft and rotates it, changing the resistance. The rubber band returns the shaft to its original position when the finger straightens. This converts finger curl movement into an electrical signal read by the ESP32. `
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -314,7 +314,19 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-``
+`What moves: The potentiometer shaft rotates when a finger bends.
+What causes the movement: The string attached to 
+the finger pulls the shaft as the finger curls, 
+while the rubber band creates tension to return 
+it to the resting position.
+How far it moves: The shaft rotates approximately 
+270-___  depending on how far the finger curls.
+How fast it moves: The shaft moves as fast as the 
+finger bends.
+What could go wrong: The string could snap or 
+detach, the rubber band could lose elasticity 
+over time or the potentiometer could shift 
+position on the glove giving inconsistent readings.`
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
@@ -328,7 +340,7 @@ If your project includes mechanical motion, document the digital planning before
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-`[Write here]`
+`______`
 
 ---
 
@@ -374,7 +386,7 @@ Insert a hand-drawn or software-made circuit diagram.
 | `MicroPython` | `[for connecting virtual world to physical glove. Connecting potentiometer and translating change in angle values to the virtual fingers.]` |
 | `Unity` | `creation of virtual world and display to show the movements of real hand on the virtual hand` |
 | `VS Code` | `for writing down the script of various assets to add on to the game objects` |
-| `Thonny` | `` |
+| `Thonny` | `for writing down the code for getting potetiometer values and running it` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -419,7 +431,7 @@ Suggested sequence:
 
 ## 11.1 Is an app part of this project?
 - [ ] Yes
-- [ ] No
+- [+] No
 
 If yes, complete this section.
 
