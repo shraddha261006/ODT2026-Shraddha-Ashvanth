@@ -128,7 +128,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of haptic technology which is new and exciting.`
+`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of technology which is new and exciting.`
 
 ---
 
@@ -662,21 +662,22 @@ What is the single biggest uncertainty in your project at this stage?
 ## 16.1 Technical Testing Plan
 
 | What Needs Testing | How You Will Test It | Success Condition |
-|---|---|---|
-| `[Bluetooth connection]` | `[Method]` | `[What counts as success?]` |
-| `[Mechanism movement]` | `[Method]` | `[What counts as success?]` |
-| `[Sensor behavior]` | `[Method]` | `[What counts as success?]` |
-| `[App communication]` | `[Method]` | `[What counts as success?]` |
+
+`| | What Needs Testing | How You Will Test It | Success Condition |
+| Potentiometer readings | Open Thonny serial monitor and bend each finger, check values change from 0-4095 | Each finger shows distinct values when bent and straight |`
+`| Serial communication | Print finger values in Thonny and check they appear consistently | All 5 values update in real time without dropping |
+| Grab mechanic | Put on glove and curl 3+ fingers around the ball in Unity | Ball attaches to wrist and follows hand movement |
+| Throw mechanic | Grab ball then open hand with a throwing motion | Ball launches in the direction of wrist movement |
+| Pin collision | Roll ball into pins in Unity | Pins fall over realistically on contact |`
 
 ## 16.2 Playtesting Plan
 
 | Question | How You Will Check |
-|---|---|
-| Do players understand what to do? | `[Method]` |
-| Is the interaction satisfying? | `[Method]` |
-| Do players want another turn? | `[Method]` |
-| Is the challenge balanced? | `[Method]` |
-| Is the response clear and immediate? | `[Method]` |
+| Do players understand what to do? | `Watch a new player attempt it without instructions` |
+| Is the interaction satisfying? | `Ask players if grabbing and throwing felt natural` |
+| Do players want another turn? |` Observe if players ask to play again` |
+| Is the challenge balanced? | `Check if players can knock pins but not every time` |
+| Is the response clear and immediate? | `Check if grab and release happens without delay` |
 
 ## 16.3 Testing and Debugging Log
 
@@ -688,9 +689,9 @@ What is the single biggest uncertainty in your project at this stage?
 ## 16.4 Playtesting Notes
 
 | Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
-|---|---|---|---|---|
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
-| `[Peer / friend / classmate]` | `[Observation]` | `[Observation]` | `[Observation]` | `[Action]` |
+| [19/04] | Pins floating after being hit | Technical | Added physics material with bounciness 0 | Partly worked | Adjust collider on pin |
+| 17/04 | Potentiometer giving inconsistent readings | Technical | Checked wiring connections on breadboard | Worked | No further action needed |
+| [18/04] | Grab not triggering consistently | Mechanical | Adjusted grab threshold value in GrabObject | Partly worked | Fine tune threshold values |
 
 ---
 
