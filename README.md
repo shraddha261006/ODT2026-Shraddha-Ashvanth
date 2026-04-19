@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. It also creates an interactive and a playful environment for friends to play and compare their bowling skills. One is drawn to the game and wants to keep coming back to it to score more and feel the thrill of the game, all played virtually. `
+`The experience is of one that feels like it belongs in the virtual world just as much as the real one. We want the player to feel a sort of out of world feeling as their real life actions mimic a response in the digital. It also creates an interactive and a playful environment for friends to play and compare their bowling skills. One is drawn to the game and wants to keep coming back to it to score more and feel the thrill of the game, all played virtually.  `
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +109,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`Interactive experience for mixed audience.`
+`Interactive, fun experience for bowling enthusiats of all age groups.`
 
 ---
 
@@ -150,31 +150,31 @@ Examples:
 
 | Question | Response |
 |---|---|
-| Who is this for? | `VR + E - sports enthusiasts + general public` |
+| Who is this for? | `VR + E - sports enthusiasts + general public who enjoy bowling` |
 | Age range | `all age groups` |
 | Solo or multiplayer | `solo` |
-| Expected duration of one round | `few mins or lesser` |
-| What should the player feel? | `a sense of the virtual bowling alley and feeling of throwing a ball ` |
-| Is explanation required before use? | `not really , just explain the point of the game- that is to pick up the ball and aim for the pins and do the motion of throwing it` |
+| Expected duration of one round | `a minute or lesser` |
+| What should the player feel? | `A sense of the virtual bowling alley and feeling of throwing a ball. Feeling the thrill of knocking down balls  ` |
+| Is explanation required before use? | `not really , just explain how bowling works - that is to pick up the ball, aim for the pins and do the motion of throwing it` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
 1. **Approach:** `wearing the glove`
 2. **Start:** `start by moving hand`
-3. **First Action:** `move hand to the front and back to get the right aim`
-4. **Main Interaction:** `release hand and grip on the virtual ball and it should go knock down the pins`
+3. **First Action:** `keep moving hand to and fro to get the right aim`
+4. **Main Interaction:** `release grip on the virtual ball and it should go knock down the pins`
 5. **System Response:** `keeps up with their movement and records aim of the wrist and hand`
-6. **Win / Lose / End Condition:** `the pins are eiether knocked down or the player misses the pins`
-7. **Reset:** `Restart and balls and pins spawn back `
+6. **Win / Lose / End Condition:** `the pins are either knocked down or the player misses the pins`
+7. **Reset:** `Restart - balls and pins spawn back `
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- `stay at the fixed position`
+- `don't show the other hand otherwise it will detect that`
+- `don't keep hand parallel to the ground `
+- `aim for the pins`
 
 ---
 
@@ -198,8 +198,8 @@ What is the smallest version of this project that still delivers the core experi
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `come back to this`
-- `[Stretch feature 2]`
+- `multiple glove sizes - so hands of all sizes can enjoy the game and play it`
+- `more realistic and cleaner glove design `
 - `[Stretch feature 3]`
 
 ---
@@ -233,16 +233,16 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`So it takes in the input of the finger bending, in terms of the angle with which the thread bends. It also takes in the input through         of the hand movememnt in the axises. The output is the virtual hand moving and bending using the inputs. Physical structure is the glove itself.`
+`It takes in the input of the fingers bending (in terms of the angle with which the knob of the potetiometer moves according to the length of the thread it's attatched to). It also takes in the input of hand movement using media pipe. The output is the virtual hand moving and bending using the inputs. One can then grip the virtual ball, aim for the pins and throw it. Physical structure is the glove itself along with the potetiometers attatched to it.`
 
 ## 6.3 Input / Output Map
 
 | System Part | Type | What It Does |
 |---|---|---|
-| `[Button / Sensor / Switch / App Input]` | Input | `[Describe]` |
-| `[ESP32 ` | Processing | `Takes in the potetioneter values and translates it into values through python.` |
-| `[ Display]` | Output | `Is the virtual world with the glove and the objects in the enviuronment. Replicates real world movement and imitation of picking up object.` |
-| `[Mechanical Assembly]` | Physical Action | `Potetiometers have a rubber band and string attatched on opposite ends. The string is attatched to the finger tip and moves along with it. The rubber band helps in bringing back the potentiometer knob to its original position when the fingers are uncurled.` |
+| `[Button / Sensor / Switch / App Input]` | Input | ` not applicable ` |
+| `[ESP32 ] ` | Processing | `Takes in the potetioneter angles and translates it into values for bending of the finger through python code.` |
+| `[ Display]` | Output | `Is the virtual world with the hand, sphere and bowling alley in the enviuronment. Replicates real world movement and imitation of the action of bowling.` |
+| `[Mechanical Assembly]` | Physical Action | `Potetiometers have a rubber band and string attatched on the opposite ends. The string is attatched to the finger tips and moves along with the finger as it bends. The rubber band helps in bringing back the knob to its original position when the fingers are uncurled.` |
 
 ---
 
@@ -287,7 +287,7 @@ Add a sketch with labels showing:
 Check all that apply.
 
 - [ ] Gears
-- [+] Pulleys
+- [ ] Pulleys
 - [ ] Belt drives
 - [ ] Linkages
 - [ ] Hinges
@@ -303,7 +303,7 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`The mechanism works such that the string and the rubber band attatched to the potetiometer help in giving values for how far the finger is bending and for when its back to its original resting postion.`
+` `
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -339,14 +339,14 @@ What changed after the CAD, animation, or simulation stage?
 | Component | Quantity | Purpose |
 |---|---:|---|
 | `[ESP32]` | `1` | `[Main controller]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| `Potentiometers` | `5` | `to record the movement of the fingers` |
+| `Wires` | `20 m ` | `Connections to breadboard` |
 
 ## 9.2 Wiring Plan
 Describe the main electrical connections.
 
 **Response:**  
-`[Write here]`
+`All the pontetiometers are connected to GND, 3V3 and a GPI04 port. The wires are soldered onto the potentiometer.`
 
 ## 9.3 Circuit Diagram
 Insert a hand-drawn or software-made circuit diagram.
@@ -371,8 +371,8 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython / Arduino / MIT App Inventor / CAD tool / other]` | `[Purpose]` |
-| `[Tool]` | `[Purpose]` |
+| `[MicroPython]` | `[for connecting virtual world to physical glove. Connecting potentiometer and translating change in angle values to the virtual fingers.]` |
+| `Unity` | `` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -732,7 +732,7 @@ What slowed you down?
 How well did you manage time, tasks, and responsibilities?
 
 **Response:**  
-`[Write here]`
+``
 
 ## 19.2 Technical Reflection
 What did you learn about:
@@ -743,7 +743,7 @@ What did you learn about:
 - integration?
 
 **Response:**  
-`[Write here]`
+``
 
 ## 19.3 Design Reflection
 What did you learn about:
@@ -755,13 +755,13 @@ What did you learn about:
 - iteration?
 
 **Response:**  
-`[Write here]`
+`Designing for play led us to think about multiple factors - how one would grip a ball, how many people can play it, how one would slip the glove in etc. The feeling of joy we got when our ball finally hit the pins is what we want all our users to feel as they play the game. It was for the sheer love of them game that we powered through and figured out all the new softwares and methods needed for this project. The need for structure and stability was something we had to rienforce into our heads as the attatchements to the glove contiously kept breaking up as we went through multiple adhesives. It was multiple rounds of trial and error that led us to our final project. We learnt that sticking to the process and having faith in it will lead to our desired outcome.`
 
 ## 19.4 If You Had One More Week
 What would you improve next?
 
 **Response:**  
-`[Write here]`
+`I would have loved to make the glove more easily wearable and customsible for all to try and play. We could have created a more realistic bowling alley envrionment. A more accurate animation of the fingers bending and picking up of the objects.`
 
 ---
 
