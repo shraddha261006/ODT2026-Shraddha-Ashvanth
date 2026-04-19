@@ -506,8 +506,11 @@ Insert a sketch or screenshot of the app interface.
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
 | `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty] ` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
+| `potentiometers` | `5 ` | `no` | `[Yes]` | `100` | `[Spec]` | `for recording change in values` |
+| `wires` | `20m` | `no` | `[Yes]` | `310` | `metal` | `conenctions` |
+| `feviquick` | `4` | `no` | `[Yes]` | `20` | `glue` | `adhesive` |
+| `elastic string` | `one roll ` | `no` | `[Yes]` | `20` | `elastic` | `for value detetion + tying` |
+
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
@@ -519,31 +522,32 @@ Examples:
 - Why bearing instead of a plain shaft hole?
 
 **Response:**  
-`[Write here]`
+`Potentiometers were chosen over buttons or flex sensors because they provide analog values, allowing us to detect how much each finger is curled rather than just on/off. This gives much more precise control for the grab and throw mechanic.Rubber bands were chosen over springs because they are lightweight, cheap, and flexible enough to stretch with finger movement without restricting natural hand motion.`
 
 ## 12.3 Items to Purchase Separately
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
+| `string ` | `elastic to tie around foam` | `__` | `15/04` | `received` |
+| `potentiometers` | `for reading valyes` | `___` | `14/04` | `received` |
 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---:|
-| Electronics | `[Cost]` |
-| Mechanical parts | `[Cost]` |
-| Fabrication materials | `[Cost]` |
+| Electronics | `100` |
+| Mechanical parts | `__` |
+| Fabrication materials | `370` |
 | Purchased extras | `[Cost]` |
 | Contingency | `[Cost]` |
-| **Total** | `[Cost]` |
+| **Total** | `470` |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-`[Write here]`
+`The overall cost of the project is relatively low since most components like the breadboard, jumper 
+wires, and ESP32 were already available. If the cost were too high, we could reduce the number of potentiometers from 5 to 3 fingers, which would still allow grab and release detection while cutting component costs. Rubber bands and string are very cheap substitutes for more expensive return mechanisms like springs.`
 
 ---
 
@@ -644,16 +648,18 @@ Expected outcomes:
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| `[Example: Bluetooth disconnects]` | `Technical` | `Medium` | `High` | `[Fallback interaction / simplify connection flow]` | `[Name]` |
-| `[Example: Structure breaks during play]` | `Mechanical` | `Medium` | `High` | `[Reinforce joints / change material]` | `[Name]` |
-| `[Risk]` | `[Technical / Material / Time / Gameplay]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
-| `[Risk]` | `[Type]` | `[Low/Medium/High]` | `[Low/Medium/High]` | `[Plan]` | `[Name]` |
+`| Potentiometer shifts on glove during play | Mechanical | High | High | Secure with tape or cable ties to keep aligned with finger joint | [Name] |
+| Serial connection drops between ESP32 and Unity | Technical | Medium | High | Restart Thonny and Unity, check USB cable connection | [Name] |
+| Wires tangle or disconnect during hand movement | Mechanical | High | Medium | Bundle and secure wires along the back of the glove with tape | [Name] |
+| Potentiometer readings inconsistent between sessions | Technical | Medium | Medium | Recalibrate threshold values in GrabObject before each session | [Name] |
+| Rubber band snaps during gameplay | Mechanical | Medium | Medium | Keep spare rubber bands available and replace immediately | [Name] | `
+
 
 ## 15.2 Biggest Unknown Right Now
 What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-`[Write here]`
+`The biggest uncertainty is whether the potentiometer  readings will be consistent and reliable enough during actual gameplay. When the glove moves quickly during a throw, the wires and potentiometers may shift position, causing incorrect finger curl readings that could accidentally trigger a grab or release at the wrong time.`
 
 ---
 
