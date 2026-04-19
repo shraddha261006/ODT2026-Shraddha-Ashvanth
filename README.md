@@ -289,10 +289,10 @@ Check all that apply.
 - [ ] Gears
 - [ ] Pulleys
 - [ ] Belt drives
-- [ ] Linkages
+- [+] Linkages
 - [ ] Hinges
-- [ ] Shafts
-- [ ] Springs
+- [+] Shafts
+- [+] Springs
 - [ ] Bearings
 - [ ] Wheels
 - [ ] Sliders
@@ -358,10 +358,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Question | Response |
 |---|---|
-| Power source | `[USB / battery / adapter / other]` |
-| Voltage required | `[Write here]` |
-| Current concerns | `[Write here]` |
-| Safety concerns | `[Write here]` |
+| Power source | `ESP32` |
+| Voltage required | `3.3 V` |
+| Current concerns | `5mA total draw from 5 potentiometers, ESP32 3.3V rail can supply up to 300mA, no current concerns identified` |
+| Safety concerns | `Loose wires causing sparks, Short circuits` |
 
 ---
 
@@ -371,8 +371,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython]` | `[for connecting virtual world to physical glove. Connecting potentiometer and translating change in angle values to the virtual fingers.]` |
-| `Unity` | `` |
+| `MicroPython` | `[for connecting virtual world to physical glove. Connecting potentiometer and translating change in angle values to the virtual fingers.]` |
+| `Unity` | `creation of virtual world and display to show the movements of real hand on the virtual hand` |
+| `VS Code` | `for writing down the script of various assets to add on to the game objects` |
+| `Thonny` | `` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
