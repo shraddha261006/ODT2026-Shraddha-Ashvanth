@@ -272,7 +272,10 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-`[Upload image and link here]`
+<img src="images/sketching.jpeg" width="400">
+<img src="images/initialsketch.jpeg" width="400">
+<img src="images/circuitdiagram.jpeg" width="400">
+
 
 ## 7.3 Approximate Dimensions
 
