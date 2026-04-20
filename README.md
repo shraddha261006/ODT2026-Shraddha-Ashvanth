@@ -741,7 +741,7 @@ Example:
 <img src="images/initialunity.jpeg" width="400">
 <img src="images/initialtracking.jpeg" width="400">
 <img src="images/gloveinitial.jpeg" width="400">
-<img src="images/initialmediapipe.jpeg" width="400">
+
 
 
 ## 17.3 Version History
