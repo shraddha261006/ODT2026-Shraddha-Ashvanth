@@ -370,7 +370,7 @@ Describe the main electrical connections.
 Insert a hand-drawn or software-made circuit diagram.
 
 **Insert image below:**  
-`[Upload image and link here]`
+<img src="images/circuitdiagram.jpeg" width="400">
 
 ## 9.4 Power Plan
 
@@ -407,7 +407,7 @@ Include:
 - reset behavior.
 
 **Response:**  
-`[Write here]`
+` `
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -423,7 +423,7 @@ Suggested sequence:
 - error handling.
 
 **Insert image below:**  
-`[Upload image and link here]`
+<img src="images/codeflow.jpeg" width="400">
 
 ## 10.4 Pseudocode
 
