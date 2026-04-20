@@ -252,7 +252,7 @@ Include:
 Add an early sketch of the full idea.
 
 **Insert image below:**  
-<images/src="notes1.jpg" width="400">
+<img src="images\notes1.jpg" width="400">
 
 
 Example:
