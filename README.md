@@ -309,7 +309,6 @@ Check all that apply.
 ## 8.2 Mechanical Description
 Describe the mechanism and what it is meant to do.
 
-**Response:**  
 `The Movement: A non-elastic string is tied to the fingertip and wrapped around the potentiometer shaft, while a rubber band acts as a counter-tension spring on the opposite side.
 
 The Action: When a finger bends, the string pulls the shaft, rotating the internal wiper and changing the sensor's electrical resistance. When the finger straightens, the rubber band automatically resets the shaft to its starting position.
