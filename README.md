@@ -120,9 +120,9 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You | ` come back to this `
 |---|---|---|
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| `make zine` | `https://makezine.com/projects/build-budget-diy-vr-haptic-gloves/` | `The low-cost approach to using flex sensors and the ergonomic layout for mounting components on a standard glove.` |
+| `hackaday` | `https://hackaday.io/project/160405-diy-haptic-glove-for-vr` | `The logic for mapping sensor resistance to Unity's physics engine and the use of ESP32 for wireless data transmission.` |
+| `aureka sky climber` | `diy haptic glove` | `The implementation of finger-curl translation and the specific use of potentiometers to measure joint rotation.` |
 
 ## 3.2 Original Twist
 What makes your project original?
