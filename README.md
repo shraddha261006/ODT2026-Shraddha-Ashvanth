@@ -310,7 +310,17 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`Each potentiometer is on the glove attatched to a foam peice. A rubber band is attached to one end of the potentiometer shaft and a string to the other. When the finger bends, the string pulls the shaft and rotates it, changing the resistance. The rubber band returns the shaft to its original position when the finger straightens. This converts finger curl movement into an electrical signal read by the ESP32. `
+`The Movement: A non-elastic string is tied to the fingertip and wrapped around the potentiometer shaft, while a rubber band acts as a counter-tension spring on the opposite side.
+
+The Action: When a finger bends, the string pulls the shaft, rotating the internal wiper and changing the sensor's electrical resistance. When the finger straightens, the rubber band automatically resets the shaft to its starting position.
+
+The Result: This setup converts physical finger flexion into a variable analog signal. This signal is read by the ESP32, allowing the software to map the exact degree of the "curl" to the virtual hand in real-time.
+
+
+
+What it is meant to do
+
+The goal of this mechanism is to provide high-fidelity finger tracking that doesn't rely on cameras alone. By using a physical tether, the system can detect subtle "gripping" motions—like squeezing a bowling ball—even if the player's palm is turned away from the webcam. It essentially gives the computer a sense of "touch" and joint-positioning that is far more reliable than software-only solutions. `
 
 ## 8.3 Motion Planning
 If something moves, explain:
