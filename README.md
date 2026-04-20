@@ -128,7 +128,7 @@ List what inspired the project.
 What makes your project original?
 
 **Response:**  
-`This is an original idea in the sense that we are combining real life hand movements to something that is intangible. This sensation of feeling something digital in real life is a form of technology which is new and exciting.`
+`This project is original because it implements a hybrid tracking system that merges mechanical finger flexion with AI-driven optical positioning, creating a high-fidelity interaction model using low-cost, accessible hardware.It is a hybrid motion-capture system that orchestrates a real-time "relay race" across four software environments. It starts with Thonny (MicroPython) capturing sensor data, moves to VS Code (Python) to integrate MediaPipe AI vision, and streams the result via UDP into Unity, where custom C# logic drives the 3D animation. The originality lies in this cross-platform orchestration; by forcing disparate languages to communicate with sub-millisecond latency`
 
 ---
 
@@ -211,16 +211,16 @@ Check all that apply.
 
 - [ + ] Electronics-based
 - [ + ] Mechanical
-- [ ] Sensor-based
-- [ ] App-connected
+- [ + ] Sensor-based
+- [ + ] App-connected
 - [ ] Motorized
 - [ ] Sound-based
-- [ ] Light-based
+- [ + ] Light-based
 - [ + ] Screen/UI-based
 - [ ] Fabricated structure
 - [ + ] Game logic based
-- [ ] Installation / tabletop experience
-- [ ] Other: `[Write here]`
+- [ + ] Installation / tabletop experience
+- [ + ] Other: `[Mixed Reality Interface]`
 
 ## 6.2 High-Level System Description
 Explain how the system works in simple terms.
@@ -310,16 +310,10 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 `The Movement: A non-elastic string is tied to the fingertip and wrapped around the potentiometer shaft, while a rubber band acts as a counter-tension spring on the opposite side.
-
 The Action: When a finger bends, the string pulls the shaft, rotating the internal wiper and changing the sensor's electrical resistance. When the finger straightens, the rubber band automatically resets the shaft to its starting position.
+The Result: This setup converts physical finger flexion into a variable analog signal. This signal is read by the ESP32, allowing the software to map the exact degree of the "curl" to the virtual hand in real-time. 
 
-The Result: This setup converts physical finger flexion into a variable analog signal. This signal is read by the ESP32, allowing the software to map the exact degree of the "curl" to the virtual hand in real-time.
-
-
-
-What it is meant to do
-
-The goal of this mechanism is to provide high-fidelity finger tracking that doesn't rely on cameras alone. By using a physical tether, the system can detect subtle "gripping" motions—like squeezing a bowling ball—even if the player's palm is turned away from the webcam. It essentially gives the computer a sense of "touch" and joint-positioning that is far more reliable than software-only solutions. `
+What it is meant to do: The goal of this mechanism is to provide high-fidelity finger tracking that doesn't rely on cameras alone. By using a physical tether, the system can detect subtle gripping motions like squeezing a bowling ball—even if the player's palm is turned away from the webcam. It essentially gives the computer a sense of "touch" and joint-positioning that is far more reliable than software-only solutions.`
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -732,7 +726,22 @@ Include:
 - revisions.
 
 **Response:**  
-`We had to 3D print the string holders for the finger joints. We then cut out the potentiometer holder out of foam board and attatched that to the glove using super glue. We had to solder the wires to the potetiometer for more stability.`
+`1. Material Prep & Cutting
+The foundation began with a standard fabric glove. Custom foam mounting blocks were hand-cut to create stable platforms for each potentiometer. These blocks were shaped to sit flush against the back of the hand, providing enough height so the strings could pull the sensor shafts without snagging on the fabric.
+
+2. Assembly & Fastening
+The "pulley" mechanism was assembled by attaching each potentiometer to its foam base using industrial adhesive.
+
+The Tension System: A non-elastic string was tied to the fingertip of the glove, threaded through guide loops, and wrapped around the potentiometer shaft.
+
+The Return Logic: A rubber band was fastened to the opposite side of the shaft. This ensures that when the hand opens, the tension from the rubber band pulls the sensor back to the "zero" position.
+
+3. Wiring & Integration
+Each sensor was wired to an ESP32 microcontroller mounted at the wrist.
+
+The Circuit: We used a common ground and power rail, with five individual signal wires running from the potentiometers to the ESP32’s Analog-to-Digital Converter (ADC) pins.
+
+Management: Wires were routed along the side of the fingers using small cable ties to prevent tangling during rapid movement.`
 
 ## 17.2 Build Photos
 Add photos throughout the project.
@@ -784,6 +793,7 @@ Describe the final version of your project.
 - `Wires on the glove get tangled during movement`
 - `Potentiometer readings can be inconsistent between 
   sessions and need recalibration`
+- `Effieicency in hand-tracking doneby mediapipe`
 
 ## 18.4 What Changed From the Original Plan
 How did the project change from the initial idea?
