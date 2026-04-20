@@ -752,8 +752,11 @@ Example:
 <img src="images/initialunity.jpeg" width="400">
 <img src="images/initialtracking.jpeg" width="400">
 <img src="images/gloveinitial.jpeg" width="400">
-
-
+<img src="images/potetiometerprocess.jpeg" width="400">
+<img src="images/handprocessinitial.jpeg" width="400">
+<img src="images/handprocess.jpeg" width="400">
+<img src="images/handprocess2.jpeg" width="400">
+<img src="images/handprocess3.jpeg" width="400">
 
 ## 17.3 Version History
 
