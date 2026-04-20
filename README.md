@@ -253,6 +253,9 @@ Add an early sketch of the full idea.
 
 **Insert image below:**  
 <img src="images/notes1.jpeg" width="400">
+<img src="images/notes2.jpeg" width="400">
+<img src="images/notes3.jpeg" width="400">
+<img src="images/notes4.jpeg" width="400">
 
 
 Example:
