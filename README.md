@@ -283,8 +283,8 @@ Add a sketch with labels showing:
 |---|---|
 | Length | `20 cm (glove)` |
 | Width | `6cm-bottom, 13 cm top` |
-| Height | `[Write here]` |
-| Estimated weight | `[Write here]` |
+| Height | `20 cm` |
+| Estimated weight | `500 gm approx` |
 
 ---
 
@@ -407,7 +407,7 @@ Include:
 - reset behavior.
 
 **Response:**  
-` `
+`The system starts with two hardware inputs: a set of 5 potentiometers connected by string that measure finger curl angles (sent over COM6 via Thonny), and a camera that feeds into Mediapipe to track 21 hand landmarks as (x, y) coordinates. Both streams are ingested by hand_tracker.py, which bundles them into UDP packets and broadcasts on port 5005. On the Unity side, UDPReceiver.cs listens for those packets and passes the raw bytes to HandDataHub.cs, which parses them into structured data that the rest of the system can use. VRHandManager.cs then reads from the data hub and applies the values to the hand GameObjects in the scene, while Finger.cs, attached to each finger bone, handles calibration and maps the incoming values to actual bone rotations, producing the final hand and finger motion in VR. A separate script, GrabObject.cs, continuously checks whether finger bend values exceed a grab threshold, and when they do, it triggers a grab or throw action using the velocity at the moment of release. `
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -737,11 +737,12 @@ Suggested images:
 - final build.
 
 Example:
-```md
+<img src="images/finaltesting.jpeg" width="400">
+<img src="images/initialunity.jpeg" width="400">
+<img src="images/initialtracking.jpeg" width="400">
+<img src="images/gloveinitial.jpeg" width="400">
+<img src="images/initialmediapipe.jpeg" width="400">
 
-
-
-```
 
 ## 17.3 Version History
 
