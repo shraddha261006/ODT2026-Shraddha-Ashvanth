@@ -62,7 +62,7 @@ By the final review, this README should clearly show:
 | `Ashvanth` | `Electronics` | `not applicable` | `Motivational` |
 
 ## 1.3 Project Title
-`MIMIC (Multimodal Interactive Mixed Reality Interface & Control)`
+`Vector Strike`
 
 ## 1.4 One-Line Pitch
 `A mixed reality world which shows the environment of a bowling alley. One can mimic the picking up of the bowling ball, aim for the balls and try to knock them down.`
@@ -508,8 +508,10 @@ Insert a sketch or screenshot of the app interface.
 | `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
 | `potentiometers` | `5 ` | `no` | `[Yes]` | `100` | `[Spec]` | `for recording change in values` |
 | `wires` | `20m` | `no` | `[Yes]` | `310` | `metal` | `conenctions` |
-| `feviquick` | `4` | `no` | `[Yes]` | `20` | `glue` | `adhesive` |
+| `feviquick` | `5` | `no` | `[Yes]` | `25` | `glue` | `adhesive` |
 | `elastic string` | `one roll ` | `no` | `[Yes]` | `20` | `elastic` | `for value detetion + tying` |
+| `soldering wire` | `one roll ` | `no` | `[Yes]` | `80 ` | `metal ` | `soldering` |
+| `badge reels` | `3 ` | `no` | `[Yes]` | `90` | `thread+spool` | `attatchement` |
 
 
 ## 12.2 Material Justification
@@ -537,10 +539,10 @@ Examples:
 |---|---:|
 | Electronics | `100` |
 | Mechanical parts | `__` |
-| Fabrication materials | `370` |
+| Fabrication materials | `450` |
 | Purchased extras | `[Cost]` |
 | Contingency | `[Cost]` |
-| **Total** | `470` |
+| **Total** | `550` |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
@@ -564,32 +566,30 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-`[Write here]`
+`Our team operates on a collaborative-lead model, where we divide tasks based on our core strengths while supporting each other's progress. Ashvanth leads the Unity environment and system integration, while Shraddha manages the documentation, with both of us sharing responsibility for testing and physical builds. Decisions are made through consensus, though the "Main Owner" of a specific area has the final say if we disagree. We stay on track with constant check-ins every day. If a task is delayed, we immediately communicate to redistribute the workload or adjust our scope. Finally, we maintain documentation in real-time, with Shraddha managing the logs and Ashvanth contributing technical code and logic.`
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
-|---|---|---|---:|---|---|---|
-| T1 | `[Finalize concept]` | `[Name]` | `2` | `[Date]` | `None` | `To Do` |
-| T2 | `[Complete BOM]` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | `[Test electronics]` | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
-| T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
-| T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
-| T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
-| T7 | `[Playtest]` | `[Name]` | `2` | `[Date]` | `T6` | `To Do` |
-| T8 | `[Refine and document]` | `[Name]` | `3` | `[Date]` | `T7` | `To Do` |
-
+`T1 | Finalize concept | Both | 2 | 10/04 | None | finished |
+T2 | Complete BOM | Shraddha | 1 | 20/04 | T1 | finished |
+T3 | Test electronics | both | 13/04 | T1 | finished |
+T4 | Build structure | both | 4 | 18/04 | T1 | finsihed |
+T5 | Write control code | Ashvanth | 4 | 16/04 | T3 | finished |
+T6 | Integrate system | both | 4 | 17/04 | "T4, T5" | finished |
+T7 | Playtest | Both | 2 | 18/04 + 19/04 | T6 | finished |
+T8 |Refine and document | Shraddha | 3 |20/04 |T7| finished | `
 ## 13.3 Responsibility Split
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept and gameplay | `[Name]` | `[Name]` |
-| Electronics | `[Name]` | `[Name]` |
-| Coding | `[Name]` | `[Name]` |
-| App | `[Name]` | `[Name]` |
-| Mechanical build | `[Name]` | `[Name]` |
-| Testing | `[Name]` | `[Name]` |
-| Documentation | `[Name]` | `[Name]` |
+| Concept and gameplay | `Shraddha` | `Ashvanth` |
+| Electronics | `Ashvanth` | `Shraddha` |
+| Coding | `Ashvanth` | `Shraddha` |
+| App | `Ashvanth` | `Shraddha` |
+| Mechanical build | `Shraddha` | `Ashvanth` |
+| Testing | `Ashvanth` | `Shraddha` |
+| Documentation | `Shraddha` | `Ashvanth` |
 
 ---
 
@@ -635,10 +635,10 @@ Expected outcomes:
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 3 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 4 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | `finalise idea` | `came up with the picking up of objects and glove idea` | `changed it to the bowling alley` |
+| Week 2 | `get products + 3d print ` | `got the products + materials required` | `nothing changed` | `can start planning` |
+| Week 3 | `make the scene on unity + get fingers bending to work (figure out potetiometer mechanism` | `came up with a new mechanism as current one did not work` | `connected the knobs of the poteitometer to a rubber band on one end instead` | `figure out how to attatch to the glove` |
+| Week 4 | `figure out media pipe + hand tracking + connecting everything together` | `happened as planned` | `no changes` | `test it all out` |
 
 ---
 
@@ -647,12 +647,12 @@ Expected outcomes:
 ## 15.1 Risk Register
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
-|---|---|---|---|---|---|
-`| Potentiometer shifts on glove during play | Mechanical | High | High | Secure with tape or cable ties to keep aligned with finger joint | [Name] |
-| Serial connection drops between ESP32 and Unity | Technical | Medium | High | Restart Thonny and Unity, check USB cable connection | [Name] |
-| Wires tangle or disconnect during hand movement | Mechanical | High | Medium | Bundle and secure wires along the back of the glove with tape | [Name] |
-| Potentiometer readings inconsistent between sessions | Technical | Medium | Medium | Recalibrate threshold values in GrabObject before each session | [Name] |
-| Rubber band snaps during gameplay | Mechanical | Medium | Medium | Keep spare rubber bands available and replace immediately | [Name] | `
+
+| `Potentiometer shifts on glove during play | Mechanical | High | High | Secure with tape or cable ties to keep aligned with finger joint | [Name] ` |
+| `Serial connection drops between ESP32 and Unity | Technical | Medium | High | Restart Thonny and Unity, check USB cable connection | [Name]` |
+| `Wires tangle or disconnect during hand movement | Mechanical | High | Medium | Bundle and secure wires along the back of the glove with tape | [Name] `|
+| `Potentiometer readings inconsistent between sessions | Technical | Medium | Medium | Recalibrate threshold values in GrabObject before each session | [Name]`|
+| `Rubber band snaps during gameplay | Mechanical | Medium | Medium | Keep spare rubber bands available and replace immediately | [Name] `|
 
 
 ## 15.2 Biggest Unknown Right Now
@@ -669,7 +669,7 @@ What is the single biggest uncertainty in your project at this stage?
 
 | What Needs Testing | How You Will Test It | Success Condition |
 
-`| | What Needs Testing | How You Will Test It | Success Condition |
+`|  What Needs Testing | How You Will Test It | Success Condition |
 | Potentiometer readings | Open Thonny serial monitor and bend each finger, check values change from 0-4095 | Each finger shows distinct values when bent and straight |`
 `| Serial communication | Print finger values in Thonny and check they appear consistently | All 5 values update in real time without dropping |
 | Grab mechanic | Put on glove and curl 3+ fingers around the ball in Unity | Ball attaches to wrist and follows hand movement |
